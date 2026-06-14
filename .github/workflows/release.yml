@@ -1,0 +1,30 @@
+﻿name: Publicar Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout del cÃ³digo
+        uses: actions/checkout@v3
+
+      - name: Comprimir Addon
+        run: |
+          REPO_NAME=$(basename $GITHUB_REPOSITORY)
+          mkdir -p release/$REPO_NAME
+          rsync -av --exclude='.git' --exclude='.github' --exclude='release' ./ release/$REPO_NAME/
+          cd release
+          zip -r $REPO_NAME.zip $REPO_NAME
+
+      - name: Crear Release AutomÃ¡tico
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: "v1.0.${{ github.run_number }}"
+          name: "VersiÃ³n v1.0.${{ github.run_number }}"
+          files: release/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

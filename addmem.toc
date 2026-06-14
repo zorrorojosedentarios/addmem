@@ -1,0 +1,10 @@
+﻿## Interface: 30300
+## Title: !|cff00ffffAddon Naer|r |cff33ff33[addmem]|r
+## Notes: Monitor de addons: Uso de memoria, lag y detección de comportamientos extraños.
+## Author: Zorrorojo/Miabuelita (Guild Sedentarios)
+## Version: 1.0
+## DefaultState: enabled
+## SavedVariables: AddMemDB
+## X-Part-Of: !|cff00ffffAddon Naer|r
+
+addmem.lua

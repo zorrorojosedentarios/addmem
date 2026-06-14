@@ -1,0 +1,12 @@
+# SavedVariables — no se versiona
+*.lua.bak
+**/SavedVariables/
+
+# Archivos de sistema Windows
+Thumbs.db
+Desktop.ini
+
+# Editores
+.vscode/
+*.suo
+*.user
